@@ -21,7 +21,6 @@ export default function TaskDetails() {
       try {
         const response = await api.get("/tasks");
 
-        // Buscando pelo _id do MongoDB
         const taskEncontrada = response.data.find(
           (t) => String(t._id) === String(id),
         );
@@ -50,7 +49,7 @@ export default function TaskDetails() {
       alert("Tarefa atualizada com sucesso!");
       navigate("/dashboard");
     } catch (error) {
-      alert("Erro ao atualizar a tarefa.");
+      toast.error("Erro ao atualizar a tarefa.");
       console.error(error);
     }
   };
@@ -65,7 +64,7 @@ export default function TaskDetails() {
       await api.delete(`/tasks/${id}`);
       navigate("/dashboard");
     } catch (error) {
-      alert("Erro ao excluir a tarefa.");
+      toast.error("Erro ao excluir a tarefa.");
     }
   };
 

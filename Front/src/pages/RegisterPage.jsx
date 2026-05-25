@@ -17,7 +17,7 @@ export default function RegisterPage() {
     e.preventDefault();
 
     if (password !== confirmPassword) {
-      alert("As senhas não coincidem. Digite novamente!");
+      toast.error("As senhas não coincidem.");
       return;
     }
 
@@ -29,12 +29,12 @@ export default function RegisterPage() {
         confirmPassword,
       });
 
-      alert("Cadastro realizado! Faça login para continuar.");
+      toast.success("Cadastro realizado! Faça login para continuar.");
       navigate("/");
     } catch (err) {
-      const mensagemErro =
-        err.response?.data?.message || "Erro ao cadastrar. Tente novamente.";
-      alert(mensagemErro);
+      toast.error(
+        "Erro ao cadastrar usuário. Verifique os dados e tente novamente.",
+      );
       console.error(err);
     }
   };

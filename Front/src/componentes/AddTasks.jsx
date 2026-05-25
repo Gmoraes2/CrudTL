@@ -13,11 +13,10 @@ export default function AddTasks({ onAdd }) {
     e.preventDefault();
 
     if (!title.trim() || !description.trim()) {
-      alert("Por favor, preencha o título e a descrição.");
+      toast.error("Título e descrição são obrigatórios.");
       return;
     }
 
-    // Passa o status selecionado junto com o título e descrição
     onAdd(title, description, status);
 
     setTitle("");

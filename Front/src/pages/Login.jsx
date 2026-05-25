@@ -18,6 +18,7 @@ export default function Login() {
       localStorage.setItem("token", response.data.token);
       navigate("/dashboard");
     } catch (err) {
+      toast.error("Email ou senha inválidos.");
       setError("Email ou senha inválidos.");
     }
   };

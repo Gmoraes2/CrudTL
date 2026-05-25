@@ -20,7 +20,7 @@ api.interceptors.response.use(
   (error) => {
     if (error.response && error.response.status === 401) {
       localStorage.removeItem("token");
-      window.location.href = "/"; // Se o token for inválido, chuta para o Login
+      window.location.href = "/";
     }
     return Promise.reject(error);
   },
