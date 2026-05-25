@@ -1,0 +1,18 @@
+services:
+  back:
+    build:
+      context: ./Back
+    ports:
+      - "3000:3000"
+    env_file:
+      - ./Back/.env
+    restart: unless-stopped
+
+  front:
+    build:
+      context: ./Front
+    ports:
+      - "8080:80"
+    depends_on:
+      - back
+    restart: unless-stopped
