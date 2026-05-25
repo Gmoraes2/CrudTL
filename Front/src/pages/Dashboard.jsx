@@ -20,7 +20,7 @@ export default function Dashboard() {
       const response = await api.get("/tasks");
       setTasks(response.data);
     } catch (error) {
-      toast.error("Erro ao buscar tarefas");
+      alert("Erro ao buscar tarefas");
       console.error("Erro ao buscar tarefas", error);
     }
   };
@@ -35,7 +35,7 @@ export default function Dashboard() {
 
       fetchTasks();
     } catch (error) {
-      toast.error("Erro ao adicionar tarefa");
+      alert("Erro ao adicionar tarefa");
       console.error(error);
     }
   };

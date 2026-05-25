@@ -14,11 +14,9 @@ const authMiddleware = (req, res, next) => {
       .json({ message: "Acesso negado. Token não fornecido." });
   }
 
-  // 2. Verifica se o token é válido e não expirou
   try {
     const decoded = jwt.verify(token, process.env.JWT_SECRET);
 
-    // 3. Salva o ID do usuário na requisição para podermos usar nos controllers de Tarefas depois!
     req.userId = decoded.id;
 
     return next();
