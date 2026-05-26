@@ -1,8 +1,6 @@
 const express = require("express");
-
 const RegisterController = require("../controllers/register.controller");
 const LoginController = require("../controllers/login.controller");
-
 const router = express.Router();
 
 /**
@@ -41,10 +39,34 @@ const router = express.Router();
  *     responses:
  *       201:
  *         description: Usuário criado com sucesso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Usuário criado com sucesso!"
  *       400:
  *         description: Dados inválidos ou e-mail já em uso
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "E-mail já cadastrado."
  *       500:
  *         description: Erro interno no servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Erro interno do servidor."
  */
 router.post("/register", RegisterController.handle);
 
@@ -78,13 +100,44 @@ router.post("/register", RegisterController.handle);
  *             schema:
  *               type: object
  *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Login realizado com sucesso!"
  *                 token:
  *                   type: string
  *                   example: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+ *                 user:
+ *                   type: object
+ *                   properties:
+ *                     id:
+ *                       type: string
+ *                       example: "663e0a1b2c3d4e5f6a7b8c9d"
+ *                     name:
+ *                       type: string
+ *                       example: "João Silva"
+ *                     email:
+ *                       type: string
+ *                       example: "joao@email.com"
  *       401:
  *         description: Credenciais inválidas (e-mail ou senha incorretos)
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "E-mail ou senha incorretos."
  *       500:
  *         description: Erro interno no servidor
+ *         content:
+ *           application/json:
+ *             schema:
+ *               type: object
+ *               properties:
+ *                 message:
+ *                   type: string
+ *                   example: "Erro interno do servidor."
  */
 router.post("/login", LoginController.handle);
 
